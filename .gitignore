@@ -32,7 +32,7 @@
 *.exe
 *.out
 *.app
-*.i*86
+*.i*87
 *.x86_64
 *.hex
 
@@ -50,3 +50,9 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Folders and Miscellaneous
+MLX42/
+.vscode/
+build/
+so_long
