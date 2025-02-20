@@ -13,18 +13,20 @@ int	ft_strrcmp(char *s1, char *s2)
 	int	len_s1;
 	int	len_s2;
 	
-	len_s1 = ft_strlen(s1);
-	len_s2 = ft_strlen(s2);
+	len_s1 = ft_strlen(s1) - 1;
+	len_s2 = ft_strlen(s2) - 1;
 
-	while (s1[len_s1] && s2[len_s2] && s1[len_s1] == s2[len_s2])
+	while (len_s1 >= 0 && len_s2 >= 0 && s1[len_s1] == s2[len_s2])
 	{
 		len_s1--;
 		len_s2--;
 	}
-	return (s1[len_s1] - s2[len_s2]);
+	if (len_s1 >= 0 && len_s2 >= 0)
+		return (s1[len_s1] - s2[len_s2]);
+	return (0);
 }
 
 int main()
 {
-	printf("%d\n", ft_strrcmp("caca", "pipi"));
+	printf("%d\n", ft_strrcmp("caca.ber", ".be"));
 }

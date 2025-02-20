@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tylerlover911 <tylerlover911@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 23:08:08 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/20 01:38:27 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/20 06:47:08by tylerlover9      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int main(int argc, char **argv)
 
 	mlx = NULL;
 	if (argc != 2)
-		return(1);
+		return(ft_putstr_fd(E_FORMAT_MAP, 2), 1);
 	if (verify_format(argv[1]) == false)
-		return(1);
+		return(ft_putstr_fd(E_FORMAT_MAP, 2), 1);
 
 	mlx = mlx_init(1280, 720, "caca", true);
 	if (!mlx)

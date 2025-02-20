@@ -22,21 +22,21 @@ $(OBJS_DIR)%.o: $(SRCS_DIR)%.c
 
 $(NAME): $(OBJS_PREF) signature
 	@$(CC) $(FLAGS) $(OBJS_PREF) $(MLXLIB) -g -o $(NAME)
-	@echo "Program Compiled"
+	@echo "|🛠️| Program Compiled"
 
 all: libmlx $(NAME)
 
 libmlx:
 	@cmake $(MLXPATH) -B $(MLXPATH)/build && make -C $(MLXPATH)/build -j4
-	@echo "MLX Compiled"
+	@echo "|📚| MLX Compiled"
 
 clean:
 	@rm -rf $(OBJS_DIR)
-	@echo "Removing objects.."
+	@echo "|🗑️| Removing objects.."
 
 fclean: clean signature
 	@rm -f $(NAME)
-	@echo "Cleaning.."
+	@echo "|🧹| Cleaning.."
 
 re: fclean all signature
 
