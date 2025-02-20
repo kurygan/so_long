@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/18 23:05:24 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/19 01:30:56 by mkettab          ###   ########.fr       */
+/*   Created: 2025/02/19 00:04:46 by mkettab           #+#    #+#             */
+/*   Updated: 2025/02/19 01:42:44 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "../includes/so_long.h"
 
-# include "../MLX42/include/MLX42/MLX42.h"
-# include <stdlib.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdbool.h>
+void	ft_putstr_fd(char *str, int fd)
+{
+	while (str)
+		write(fd, str++, 1);
+}
 
-# define E_FORMAT_MAP "Map format is wrong, you dumb shit!"
+int	ft_strlen(char *str)
+{
+	int len;
 
-void	ft_putstr_fd(char *str, int fd);
-int		ft_strlen(char *str);
-bool	verify_format(char *str);
-
-#endif
+	len = 0;
+	while (str[len])
+		len++;
+	return (len);
+}

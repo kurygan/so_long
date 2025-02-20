@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   map_format.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/18 23:08:08 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/20 01:38:27 by mkettab          ###   ########.fr       */
+/*   Created: 2025/02/19 00:18:50 by mkettab           #+#    #+#             */
+/*   Updated: 2025/02/20 02:44:39 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int main(int argc, char **argv)
+int	ft_strrcmp(char *s1, char *s2)
 {
-	mlx_t *mlx;
+	int	len_s1;
+	int	len_s2;
+	
+	len_s1 = ft_strlen(s1) - 1;
+	len_s2 = ft_strlen(s2) - 1;
 
-	mlx = NULL;
-	if (argc != 2)
-		return(1);
-	if (verify_format(argv[1]) == false)
-		return(1);
+	while (s1[len_s1] && s2[len_s2] && s1[len_s1] == s2[len_s2])
+	{
+		len_s1--;
+		len_s2--;
+	}
+	return (s1[len_s1] - s2[len_s2]);
+}
 
-	mlx = mlx_init(1280, 720, "caca", true);
-	if (!mlx)
-		return(EXIT_FAILURE);
-	mlx_loop(mlx);
-	mlx_terminate(mlx);
-	return (EXIT_SUCCESS);
+bool	verify_format(char *str)
+{
+	printf("%d\n", ft_strrcmp(str, ".ber"));
+	if (!str || ft_strrcmp(str, ".ber") != 0)
+		return (false);
+	return (true);
 }

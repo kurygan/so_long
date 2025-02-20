@@ -5,7 +5,8 @@ MLXPATH = ./MLX42
 MLXHEAD = $(MLXPATH)/include
 MLXLIB = $(MLXPATH)/build/libmlx42.a -ldl -lglfw -pthread -lm
 
-SRCS = so_long.c
+SRCS = so_long.c utils.c \
+	   map_format.c \
 
 OBJS = $(SRCS:.c=.o)
 SRCS_DIR = src/
