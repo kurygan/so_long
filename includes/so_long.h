@@ -6,7 +6,7 @@
 /*   By: tylerlover911 <tylerlover911@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 23:05:24 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/20 07:04:00 by tylerlover9      ###   ########.fr       */
+/*   Updated: 2025/02/20 07:16:58 by tylerlover9      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdbool.h>
 
 # define E_FORMAT_MAP "Map format is wrong, you dumb shit!"
+# define BUFFER_SIZE 5
 
 void	ft_putstr_fd(char *str, int fd);
 int		ft_strlen(char *str);

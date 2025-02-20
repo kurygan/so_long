@@ -21,6 +21,8 @@ int main(int argc, char **argv)
 		return(ft_putstr_fd(E_FORMAT_MAP, 2), 1);
 	if (verify_format(argv[1]) == false)
 		return(ft_putstr_fd(E_FORMAT_MAP, 2), 1);
+	
+	
 
 	mlx = mlx_init(1280, 720, "caca", true);
 	if (!mlx)
