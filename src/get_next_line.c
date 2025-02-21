@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tylerlover911 <tylerlover911@student.42    +#+  +:+       +#+        */
+/*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 19:24:39 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/20 07:16:13 by tylerlover9      ###   ########.fr       */
+/*   Updated: 2025/02/21 02:55:08 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char *get_next_line(int fd)
 	if (0 == error)
 		return (NULL);
 	if (-1 == error)
-		return (lst_free(buf), buf = NULL, NULL);
+		error_handle(map_nf);
 	get_line_appart(buf, &fin_line);
 	lst_clean(&buf);
 	if (!(fin_line[0]))
@@ -106,7 +106,7 @@ void get_line_appart(t_list *buf, char **str)
 		{
 			if (buf->content[i] == '\n')
 			{
-				(*str)[j++] = buf->content[i];
+				j++;
 				break;
 			}
 			(*str)[j++] = buf->content[i++];

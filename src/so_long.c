@@ -14,15 +14,16 @@
 
 int main(int argc, char **argv)
 {
-	mlx_t *mlx;
+	mlx_t	*mlx;
+	char	**map;
 
 	mlx = NULL;
 	if (argc != 2)
-		return(ft_putstr_fd(E_FORMAT_MAP, 2), 1);
+		error_handle(wrong_args);
 	if (verify_format(argv[1]) == false)
-		return(ft_putstr_fd(E_FORMAT_MAP, 2), 1);
+		error_handle(map_format);
 	
-	
+	map = get_map(argv[1]);
 
 	mlx = mlx_init(1280, 720, "caca", true);
 	if (!mlx)

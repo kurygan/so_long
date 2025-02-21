@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tylerlover911 <tylerlover911@student.42    +#+  +:+       +#+        */
+/*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 19:24:41 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/20 07:16:19 by tylerlover9      ###   ########.fr       */
+/*   Updated: 2025/02/21 02:33:29 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,16 +61,6 @@ void	line_gen(char **str, t_list *buf)
 		buf = buf->next;
 	}
 	*str = malloc(sizeof(char) * (len + 1));
-}
-
-int	ft_strlen	(char *str)
-{
-	int	len;
-
-	len = 0;
-	while(str[len])
-		len++;
-	return (len);
 }
 
 void	lst_free(t_list *lst)

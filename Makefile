@@ -7,6 +7,9 @@ MLXLIB = $(MLXPATH)/build/libmlx42.a -ldl -lglfw -pthread -lm
 
 SRCS = so_long.c utils.c \
 	   map_format.c \
+	   error_handle.c \
+	   get_next_line.c get_next_line_utils.c \
+	   assign_map.c
 
 OBJS = $(SRCS:.c=.o)
 SRCS_DIR = src/
