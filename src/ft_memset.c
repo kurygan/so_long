@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/21 03:01:11 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/21 20:02:13 by mkettab          ###   ########.fr       */
+/*   Created: 2024/10/18 18:25:29 by mkettab           #+#    #+#             */
+/*   Updated: 2024/10/18 21:47:23 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include <stdlib.h>
 
-void	verify_map(char **map)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	verif_lenght(map);
-}
+	unsigned char	*char_ptr;
+	size_t			i;
 
-void	verif_lenght(char **map)
-{
-	int		base_len;
-	char	**temp;
-
-	if (!map || !*map)
-		return ;
-	base_len = ft_strlen(*map);
-	temp = map;
-	while (*temp)
+	char_ptr = (unsigned char *)b;
+	i = 0;
+	while (i < len)
 	{
-		if (ft_strlen(*temp) != base_len)
-		{
-			ft_freeall(map);
-			error_handle(map_n_rect, true);
-		}
-		temp++;
+		char_ptr[i] = c;
+		i++;
 	}
+	return (char_ptr);
 }

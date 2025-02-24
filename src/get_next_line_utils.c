@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 19:24:41 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/21 02:33:29 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/21 20:10:13 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ void	line_gen(char **str, t_list *buf)
 		buf = buf->next;
 	}
 	*str = malloc(sizeof(char) * (len + 1));
+	if (*str)
+		ft_memset(*str, 0, len + 1);
 }
 
 void	lst_free(t_list *lst)

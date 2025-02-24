@@ -12,7 +12,7 @@
 
 #include "../includes/so_long.h"
 
-static int	get_lines(char *file)
+static int	malloc_lines(char *file)
 {
 	int		fd;
 	int		count;
@@ -38,8 +38,8 @@ char	**get_map(char *file)
 	char	**map;
 	int		i;
 	
-	lines_number = get_lines(file);
-	map = malloc(sizeof(char *) * (lines_number));
+	lines_number = malloc_lines(file);
+	map = malloc(sizeof(char *) * (lines_number + 1));
 	if (!map)
 		exit(EXIT_FAILURE);
 	fd = open(file, O_RDONLY);

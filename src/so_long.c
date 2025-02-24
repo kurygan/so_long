@@ -19,11 +19,12 @@ int main(int argc, char **argv)
 
 	mlx = NULL;
 	if (argc != 2)
-		error_handle(wrong_args);
+		error_handle(wrong_args, false);
 	if (verify_format(argv[1]) == false)
-		error_handle(map_format);
+		error_handle(map_format, false);
 	
 	map = get_map(argv[1]);
+	verify_map(map);
 
 	mlx = mlx_init(1280, 720, "caca", true);
 	if (!mlx)
