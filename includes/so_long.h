@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 23:05:24 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/24 23:40:05 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/25 00:32:09 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int		ft_strrcmp(char *s1, char *s2);
 char	**get_map(char *file);
 void	verify_map(char **map);
 void	verif_lenght(char **map);
+void	verif_walls(char **map);
+void	verif_up_down(char *temp, char **map);
 void	*ft_memset(void *b, int c, size_t len);
 
 // Error type
@@ -39,11 +41,12 @@ typedef enum s_error_handle
 	map_format,
 	map_nf,
 	texture_nf,
-	map_n_rect
+	map_n_rect,
+	map_walls
 }	t_error_handle;
 
 void	ft_freeall(char **map);
-void	error_handle(t_error_handle error, bool need_free);
+void	error_handle(t_error_handle error);
 
 // GNL shit
 typedef struct s_list

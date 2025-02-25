@@ -23,7 +23,7 @@ char	*get_next_line(int fd)
 	if (0 == error)
 		return (NULL);
 	if (-1 == error)
-		return (lst_clean(&buf), buf = NULL, error_handle(map_nf, false), NULL);
+		return (lst_clean(&buf), buf = NULL, error_handle(map_nf), NULL);
 	get_line_appart(buf, &fin_line);
 	lst_clean(&buf);
 	if (!(fin_line[0]))

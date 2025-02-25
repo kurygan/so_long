@@ -19,9 +19,9 @@ int main(int argc, char **argv)
 
 	mlx = NULL;
 	if (argc != 2)
-		error_handle(wrong_args, false);
+		error_handle(wrong_args);
 	if (verify_format(argv[1]) == false)
-		error_handle(map_format, false);
+		error_handle(map_format);
 	
 	map = get_map(argv[1]);
 	verify_map(map);

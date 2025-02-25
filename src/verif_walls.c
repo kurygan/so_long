@@ -1,38 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   verif_walls.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/21 03:01:11 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/25 00:34:58 by mkettab          ###   ########.fr       */
+/*   Created: 2025/02/25 00:29:17 by mkettab           #+#    #+#             */
+/*   Updated: 2025/02/25 01:03:33 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	verify_map(char **map)
+void	verif_walls(char **map)
 {
-	verif_lenght(map);
-	verif_walls(map);
-}
-
-void	verif_lenght(char **map)
-{
-	int		base_len;
 	char	**temp;
+	int		len;
 
-	if (!map || !*map)
-		return ;
-	base_len = ft_strlen(*map);
 	temp = map;
-	while (*temp)
+	verif_up_down(*temp, map);
+	temp++;
+	while (temp[1])
 	{
-		if (ft_strlen(*temp) != base_len)
+		len = ft_strlen(*temp);
+		if (len < 1 || (*temp)[0] != '1' || (*temp)[len - 1] != '1')
 		{
 			ft_freeall(map);
-			error_handle(map_n_rect);
+			error_handle(map_walls);
+		}
+		temp++;
+	}
+	verif_up_down(*temp, map);
+}
+
+void	verif_up_down(char *temp, char **map)
+{
+	while (*temp)
+	{
+		if (*temp != '1')
+		{
+			ft_freeall(map);
+			error_handle(map_walls);
 		}
 		temp++;
 	}
