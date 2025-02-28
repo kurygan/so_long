@@ -6,22 +6,17 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 23:35:53 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/24 23:56:36 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/28 02:56:51 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	error_handle(t_error_handle error)
+void	error_handle(char *error)
 {
-	if (error == map_format)
-		ft_putstr_fd("Wrong map Format, get a brain!\n", 2);
-	else if (error == map_nf)
-		ft_putstr_fd("Error 404: Map not Found!\n", 2);
-	else if (error == wrong_args)
-		ft_putstr_fd("You forgot to put a map :|.\n", 2);
-	else if (error == map_n_rect)
-		ft_putstr_fd("It's not a rectangle fwewot :|\n", 2);
+	//ft_putstr_fd("Error\n", 2);
+	//ft_putstr_fd("--  ", 2);
+	ft_putstr_fd(error, 2);
 	exit(EXIT_FAILURE);
 }
 

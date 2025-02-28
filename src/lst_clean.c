@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:46:45 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/24 23:46:55 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/25 23:05:11 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	lst_clean(t_list **buf)
 	i = 0;
 	lst_clean_v2(get_last, buf, &i);
 	if (!*buf)
-		return;
+		return ;
 	clean_node = malloc(sizeof(t_list));
 	if (!clean_node)
 		return ;

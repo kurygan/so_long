@@ -20,6 +20,8 @@ static int	malloc_lines(char *file)
 
 	count = 0;
 	fd = open(file, O_RDONLY);
+	if (fd < 0)
+        error_handle("404: Map not Found!");
 	line = get_next_line(fd);
 	while (line)
 	{

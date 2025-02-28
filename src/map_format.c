@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_format.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tylerlover911 <tylerlover911@student.42    +#+  +:+       +#+        */
+/*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 00:18:50 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/20 06:47:51 by tylerlover9      ###   ########.fr       */
+/*   Updated: 2025/02/28 03:44:00 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int	ft_strrcmp(char *s1, char *s2)
 
 bool	verify_format(char *str)
 {
+	if (!str || ft_strrcmp(str, "/.ber") == 0)
+		return (false);
 	if (!str || ft_strrcmp(str, ".ber") != 0)
 		return (false);
 	return (true);

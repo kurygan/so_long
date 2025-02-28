@@ -53,6 +53,8 @@ dkms.conf
 
 # Folders and Miscellaneous
 MLX42/
+So_long-Tester/
 .vscode/
 build/
 so_long
+test.c

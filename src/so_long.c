@@ -15,21 +15,22 @@
 int main(int argc, char **argv)
 {
 	mlx_t	*mlx;
-	char	**map;
+	t_map	map;
 
 	mlx = NULL;
 	if (argc != 2)
-		error_handle(wrong_args);
+		error_handle("YOU NEED 1 ARGUMENT");
 	if (verify_format(argv[1]) == false)
-		error_handle(map_format);
+		error_handle("The map's supposed to be .ber :|");
 	
-	map = get_map(argv[1]);
-	verify_map(map);
+	map.map = get_map(argv[1]);
+	verify_map(&map);
+	printf("%d\n", map.count_c);
 
-	mlx = mlx_init(1280, 720, "caca", true);
-	if (!mlx)
-		return(EXIT_FAILURE);
-	mlx_loop(mlx);
-	mlx_terminate(mlx);
+	//mlx = mlx_init(1280, 720, "caca", true);
+	//if (!mlx)
+	//	return(EXIT_FAILURE);
+	//mlx_loop(mlx);
+	//mlx_terminate(mlx);
 	return (EXIT_SUCCESS);
 }

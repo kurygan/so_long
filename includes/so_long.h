@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 23:05:24 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/25 00:32:09 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/28 03:02:32 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,6 @@
 # define E_FORMAT_MAP "Map format is wrong, you dumb shit!"
 # define BUFFER_SIZE 5
 
-void	ft_putstr_fd(char *str, int fd);
-int		ft_strlen(char *str);
-bool	verify_format(char *str);
-int		ft_strrcmp(char *s1, char *s2);
-char	**get_map(char *file);
-void	verify_map(char **map);
-void	verif_lenght(char **map);
-void	verif_walls(char **map);
-void	verif_up_down(char *temp, char **map);
-void	*ft_memset(void *b, int c, size_t len);
-
 // Error type
 typedef enum s_error_handle
 {
@@ -42,19 +31,45 @@ typedef enum s_error_handle
 	map_nf,
 	texture_nf,
 	map_n_rect,
-	map_walls
+	map_walls,
+	player
 }	t_error_handle;
 
-void	ft_freeall(char **map);
-void	error_handle(t_error_handle error);
-
-// GNL shit
 typedef struct s_list
 {
 	char *content;
 	struct s_list *next;
 } t_list;
 
+typedef struct s_map
+{
+	char	**map;
+	int		count_c;
+	int		player_base_cord_x;
+	int		player_base_cord_y;
+	int		exit_coords_x;
+	int		exit_coords_y;
+}	t_map;
+
+void	ft_putstr_fd(char *str, int fd);
+int		ft_strlen(char *str);
+bool	verify_format(char *str);
+int		ft_strrcmp(char *s1, char *s2);
+char	**get_map(char *file);
+void	verify_map(t_map *map);
+void	verif_char(char **map);
+void	verif_lenght(char **map);
+void	verif_walls(char **map);
+void	verif_up_down(char *temp, char **map);
+void	*ft_memset(void *b, int c, size_t len);
+void	ft_freeall(char **map);
+void	error_handle(char *error);
+void	verif_get_stats(t_map *map);
+void	verif_player(t_map *map);
+void	verif_exit(t_map *map);
+void	count_coins(t_map *map);
+
+//GNL functions
 char	*get_next_line(int fd);
 t_list	*ft_getlast(t_list *list);
 int		ft_foundline(t_list *list);

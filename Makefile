@@ -9,7 +9,7 @@ SRCS = so_long.c utils.c \
 	   map_format.c \
 	   error_handle.c \
 	   get_next_line.c get_next_line_utils.c lst_clean.c \
-	   assign_map.c parsing.c verif_walls.c\
+	   assign_map.c parsing.c verif_walls.c verif_stats.c\
 	   ft_memset.c
 
 OBJS = $(SRCS:.c=.o)
@@ -26,11 +26,16 @@ $(OBJS_DIR)%.o: $(SRCS_DIR)%.c
 
 $(NAME): $(OBJS_PREF) $(MLXPATH)/build/libmlx42.a
 	@cc $(FLAGS) $(OBJS_PREF) $(MLXLIB) -g -o $(NAME)
-	@echo "Program compiled\n"
+	@echo "Program compiled"
 
 all: $(NAME)
 
-libmlx:	$(MLXPATH)/build/libmlx42.a
+libmlx: $(MLXFOLDER)/build/libmlx42.a
+
+$(MLXFOLDER)/build/libmlx42.a:
+	@cmake $(MLXFOLDER) -B $(MLXFOLDER)/build
+	@make -C $(MLXFOLDER)/build -j4
+	@echo "MLX Compiled"
 
 clean:
 	@rm -rf $(OBJS_DIR)
