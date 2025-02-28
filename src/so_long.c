@@ -14,10 +14,10 @@
 
 int main(int argc, char **argv)
 {
-	mlx_t	*mlx;
+	//mlx_t	*mlx;
 	t_map	map;
 
-	mlx = NULL;
+	//mlx = NULL;
 	if (argc != 2)
 		error_handle("YOU NEED 1 ARGUMENT");
 	if (verify_format(argv[1]) == false)
