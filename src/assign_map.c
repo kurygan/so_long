@@ -24,7 +24,7 @@ static int	malloc_lines(char *file, t_map *map)
         error_handle("404: Map not Found!");
 	line = get_next_line(fd);
 	if (!line)
-		error_handle("Empty Map!");
+		return(close(fd), error_handle("Empty Map!"), 0);
 	while (line)
 	{
 		count++;
