@@ -106,7 +106,7 @@ void	get_line_appart(t_list *buf, char **str)
 		{
 			if (buf->content[i] == '\n')
 			{
-				j++;
+				(*str)[j++] = buf->content[i];
 				break ;
 			}
 			(*str)[j++] = buf->content[i++];

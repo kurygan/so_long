@@ -12,7 +12,7 @@
 
 #include "../includes/so_long.h"
 
-static int	malloc_lines(char *file)
+static int	malloc_lines(char *file, t_map *map)
 {
 	int		fd;
 	int		count;
@@ -23,6 +23,8 @@ static int	malloc_lines(char *file)
 	if (fd < 0)
         error_handle("404: Map not Found!");
 	line = get_next_line(fd);
+	if (!line)
+		error_handle("Empty Map!");
 	while (line)
 	{
 		count++;
@@ -30,28 +32,36 @@ static int	malloc_lines(char *file)
 		line = get_next_line(fd);
 	}
 	close(fd);
+	printf("%d\n", count);
+	map->y_len = count;
 	return (count);
 }
 
-char	**get_map(char *file)
+char	**get_map(char *file, t_map *map)
 {
 	int		fd;
 	int		lines_number;
-	char	**map;
+	char	**temp;
 	int		i;
+	int j;
 	
-	lines_number = malloc_lines(file);
-	map = malloc(sizeof(char *) * (lines_number + 1));
-	if (!map)
+	lines_number = malloc_lines(file, map);
+	temp = malloc(sizeof(char *) * (lines_number + 1));
+	if (!temp)
 		exit(EXIT_FAILURE);
 	fd = open(file, O_RDONLY);
+	j = 0;
 	i = 0;
 	while (i < lines_number)
 	{
-		map[i] = get_next_line(fd);
+		temp[i] = get_next_line(fd);
+		while (temp[i][j] && temp[i][j] != '\n')
+			j++;
+		if (temp[i][j] == '\n')
+			temp[i][j] = 0;
 		i++;
 	}
-	map[i] = NULL;
+	temp[i] = NULL;
 	close(fd);
-	return (map);
+	return (temp);
 }
