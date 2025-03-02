@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_handle.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tylerlover911 <tylerlover911@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 23:35:53 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/28 02:56:51 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/27 21:41:14 by tylerlover9      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	error_handle(char *error)
 {
-	//ft_putstr_fd("Error\n", 2);
-	//ft_putstr_fd("--  ", 2);
+	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd("--  ", 2);
 	ft_putstr_fd(error, 2);
 	exit(EXIT_FAILURE);
 }
