@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 19:24:39 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/21 19:55:34y mkettab          ###   ########.fr       */
+/*   Updated: 2025/03/04 00:30:07 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,11 @@ char	*get_next_line(int fd)
 	if (0 == error)
 		return (NULL);
 	if (-1 == error)
-		return (lst_clean(&buf), buf = NULL, error_handle("404: Map not Found!"), NULL);
+		return (lst_clean(&buf), buf = NULL,
+			error_handle("404: Map not Found!"), NULL);
 	get_line_appart(buf, &fin_line);
 	lst_clean(&buf);
-	if (!(fin_line[0]))
+	if (fin_line && buf && !(fin_line[0]))
 	{
 		lst_free(buf);
 		buf = NULL;
@@ -115,4 +116,3 @@ void	get_line_appart(t_list *buf, char **str)
 	}
 	(*str)[j] = 0;
 }
-

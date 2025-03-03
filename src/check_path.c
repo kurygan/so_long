@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   check_path.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rbaumann <rbaumann@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+        
+	+:+     */
+/*   By: rbaumann <rbaumann@student.42.fr>          +#+  +:+      
+	+#+        */
+/*                                                +#+#+#+#+#+  
+	+#+           */
 /*   Created: 2025/03/02 01:07:15 by rbaumann          #+#    #+#             */
 /*   Updated: 2025/03/02 01:07:15 by rbaumann         ###   ########.fr       */
 /*                                                                            */
@@ -51,9 +54,10 @@ static void	free_copy(char **map_copy, int height)
 	free(map_copy);
 }
 
-static void	flood_fill(char **map, int x, int y, int *collectibles, int *exit_reach)
+static void	flood_fill(char **map, int x, int y, int *collectibles,
+		int *exit_reach)
 {
-	if (map[y][x] == '1' || map[y][x] == 'F' || x < 0 || y < 0 || x > ft_strlen(*map))
+	if (map[y][x] == '1' || map[y][x] == 'F')
 		return ;
 	if (map[y][x] == 'E')
 	{
@@ -74,6 +78,7 @@ void	check_path(t_map *map)
 	char	**map_copy;
 	int		c_count;
 	int		exit_reach;
+	int		i;
 
 	c_count = map->count_c;
 	exit_reach = 0;
@@ -81,7 +86,7 @@ void	check_path(t_map *map)
 	if (!map_copy)
 		return (ft_freeall(map->map), exit(1));
 	flood_fill(map_copy, map->p_base_x, map->p_base_y, &c_count, &exit_reach);
-	int	i = 0;
+	i = 0;
 	while (map_copy[i])
 	{
 		ft_putstr_fd(map_copy[i++], 1);
@@ -89,7 +94,8 @@ void	check_path(t_map *map)
 	}
 	free_copy(map_copy, map->y_len);
 	if (c_count > 0)
-		return (ft_freeall(map->map), error_handle("Collectible not reachable"));
+		return (ft_freeall(map->map),
+			error_handle("Collectible not reachable"));
 	if (!exit_reach)
 		return (ft_freeall(map->map), error_handle("Exit not reachable"));
 }

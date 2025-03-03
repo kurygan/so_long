@@ -12,7 +12,7 @@
 
 #include "../includes/so_long.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	//mlx_t	*mlx;
 	t_map	map;
@@ -23,7 +23,7 @@ int main(int argc, char **argv)
 		error_handle("YOU NEED 1 ARGUMENT");
 	if (verify_format(argv[1]) == false)
 		error_handle("The map's supposed to be .ber :|");
-	
+
 	ft_memset(&map, 0, sizeof(t_map));
 	ft_memset(&game, 0, sizeof(t_game));
 	map.map = get_map(argv[1], &map);

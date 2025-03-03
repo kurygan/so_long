@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:46:45 by mkettab           #+#    #+#             */
-/*   Updated: 2025/03/03 23:54:58 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/03/04 00:31:01 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void	lst_clean(t_list **buf)
 
 void	lst_clean_v2(t_list *get_last, t_list **buf, int *i)
 {
+	if (!(get_last) || !(get_last->content) || !(get_last->content[*i]))
+		return (exit(1));
 	while (get_last->content[*i] && get_last->content[*i] != '\n')
 		(*i)++;
 	if (get_last->content[*i] && get_last->content[*i] == '\n')

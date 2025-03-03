@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_handle.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tylerlover911 <tylerlover911@student.42    +#+  +:+       +#+        */
+/*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 23:35:53 by mkettab           #+#    #+#             */
-/*   Updated: 2025/03/02 15:09:41 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/03/04 00:31:20 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	error_handle(char *error)
 
 void	ft_freeall(char **map)
 {
-	char **temp;
+	char	**temp;
 
 	temp = map;
 	while (*temp)
