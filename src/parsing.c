@@ -3,21 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tylerlover911 <tylerlover911@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 03:01:11 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/28 07:04:50 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/03/03 11:37:28 by tylerlover9      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	verify_map(t_map *map)
+void	verify_map(t_map *map, t_game *game)
 {
 	verif_char(map->map);
 	verif_lenght(map);
 	verif_walls(map->map);
 	verif_get_stats(map);
+	check_path(map);
+	ft_memset(game, 0, sizeof(t_game));
 }
 
 void	verif_char(char **map)

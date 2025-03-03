@@ -9,7 +9,7 @@ SRCS = so_long.c utils.c \
 	   map_format.c \
 	   error_handle.c \
 	   get_next_line.c get_next_line_utils.c lst_clean.c \
-	   assign_map.c parsing.c verif_walls.c verif_stats.c\
+	   assign_map.c parsing.c verif_walls.c verif_stats.c check_path.c\
 	   ft_memset.c
 
 OBJS = $(SRCS:.c=.o)
@@ -26,7 +26,7 @@ $(OBJS_DIR)%.o: $(SRCS_DIR)%.c
 
 $(NAME): $(OBJS_PREF) $(MLXPATH)/build/libmlx42.a
 	@cc $(FLAGS) $(OBJS_PREF) $(MLXLIB) -g -o $(NAME)
-	@echo "Program compiled"
+	@echo "|🛠️| Program compiled"
 
 all: $(NAME)
 
@@ -41,30 +41,10 @@ clean:
 	@rm -rf $(OBJS_DIR)
 	@echo "|🗑️| Removing objects.."
 
-fclean: clean signature
+fclean: clean
 	@rm -f $(NAME)
 	@echo "|🧹| Cleaning.."
 
-re: fclean all signature
+re: fclean all
 
 .PHONY: all clean fclean re
-
-signature:
-	@echo ""
-	@echo ""
-	@echo ""
-	@echo ""
-	@echo ""
-	@echo "        ,====,,'''',,,             _____________________________________"
-	@echo " _______||__||_______ ''',       /'                                    |"
-	@echo "|    | |      | |    |    ;    /'  Name: ____Kurygan (mkettab)________ |"
-	@echo "|   CMIYGL    | |    |   ;   / o   Address: __mkettab@student.42.fr___ |"
-	@echo "|    | |      | |    |    '''\     School: ______42_Mulhouse__________ |"
-	@echo "|    | |      IGOR   |        \`\          __CALL_ME_IF_YOU_GET_LOST___ |"
-	@echo "|  OFWGKTA    | |    |          \`\.____________________________________|"
-	@echo "|____|_|______|_|____|"
-	@echo ""
-	@echo ""
-	@echo ""
-	@echo ""
-	@echo ""

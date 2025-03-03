@@ -16,6 +16,7 @@ int main(int argc, char **argv)
 {
 	//mlx_t	*mlx;
 	t_map	map;
+	t_game	game;
 
 	//mlx = NULL;
 	if (argc != 2)
@@ -23,8 +24,10 @@ int main(int argc, char **argv)
 	if (verify_format(argv[1]) == false)
 		error_handle("The map's supposed to be .ber :|");
 	
+	ft_memset(&map, 0, sizeof(t_map));
+	ft_memset(&game, 0, sizeof(t_game));
 	map.map = get_map(argv[1], &map);
-	verify_map(&map);
+	verify_map(&map, &game);
 
 	//mlx = mlx_init(1280, 720, "caca", true);
 	//if (!mlx)
