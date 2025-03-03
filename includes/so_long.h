@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tylerlover911 <tylerlover911@student.42    +#+  +:+       +#+        */
+/*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 23:05:24 by mkettab           #+#    #+#             */
-/*   Updated: 2025/03/03 11:42:10 by tylerlover9      ###   ########.fr       */
+/*   Updated: 2025/03/03 21:31:17 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,15 @@ typedef struct s_map
 	int				p_base_x;
 	int				p_base_y;
 	int				y_len;
-	int	x_len;
+	int				x_len;
 }					t_map;
 
 typedef struct s_game
 {
-	int	pos_y;
-	int	pos_x;
-	int	curr_c;
-}	t_game;
+	int				pos_y;
+	int				pos_x;
+	int				curr_c;
+}					t_game;
 
 void				ft_putstr_fd(char *str, int fd);
 int					ft_strlen(char *str);
@@ -75,8 +75,8 @@ void				verif_get_stats(t_map *map);
 void				verif_player(t_map *map);
 void				verif_exit(t_map *map);
 void				count_coins(t_map *map);
-void	check_path(t_map *map);
-char	*ft_strdup(const char *s);
+void				check_path(t_map *map);
+char				*ft_strdup(const char *s);
 
 //GNL functions
 char				*get_next_line(int fd);

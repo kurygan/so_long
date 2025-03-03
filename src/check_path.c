@@ -53,7 +53,7 @@ static void	free_copy(char **map_copy, int height)
 
 static void	flood_fill(char **map, int x, int y, int *collectibles, int *exit_reach)
 {
-	if (map[y][x] == '1' || map[y][x] == 'F')
+	if (map[y][x] == '1' || map[y][x] == 'F' || x < 0 || y < 0 || x > ft_strlen(*map))
 		return ;
 	if (map[y][x] == 'E')
 	{
