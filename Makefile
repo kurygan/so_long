@@ -9,7 +9,7 @@ SRCS = so_long.c utils.c \
 	   map_format.c \
 	   error_handle.c \
 	   get_next_line.c get_next_line_utils.c lst_clean.c \
-	   assign_map.c parsing.c verif_walls.c verif_stats.c\
+	   assign_map.c parsing.c verif_walls.c verif_stats.c check_path.c\
 	   ft_memset.c
 
 OBJS = $(SRCS:.c=.o)

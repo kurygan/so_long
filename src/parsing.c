@@ -6,18 +6,20 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 03:01:11 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/28 07:04:50 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/03/04 04:24:19 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	verify_map(t_map *map)
+void	verify_map(t_map *map, t_game *game)
 {
 	verif_char(map->map);
 	verif_lenght(map);
 	verif_walls(map->map);
 	verif_get_stats(map);
+	check_path(map);
+	ft_memset(game, 0, sizeof(t_game));
 }
 
 void	verif_char(char **map)
@@ -51,6 +53,7 @@ void	verif_lenght(t_map *map)
 	if (!map->map || !map->map[0])
 		return ;
 	base_len = ft_strlen(map->map[0]);
+	map->x_len = base_len;
 	temp = map->map;
 	i = 0;
 	while (i < map->y_len)

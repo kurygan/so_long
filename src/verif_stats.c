@@ -37,8 +37,8 @@ void	verif_player(t_map *map)
 			if (temp[y][x] == 'P')
 			{
 				count++;
-				map->player_base_cord_y = y;
-				map->player_base_cord_x = x;
+				map->p_base_y = y;
+				map->p_base_x = x;
 			}
 			x++;
 		}

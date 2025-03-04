@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 23:05:24 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/28 07:04:37 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/03/03 21:31:17 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,25 @@ typedef struct s_map
 {
 	char			**map;
 	int				count_c;
-	int				player_base_cord_x;
-	int				player_base_cord_y;
+	int				p_base_x;
+	int				p_base_y;
 	int				y_len;
+	int				x_len;
 }					t_map;
+
+typedef struct s_game
+{
+	int				pos_y;
+	int				pos_x;
+	int				curr_c;
+}					t_game;
 
 void				ft_putstr_fd(char *str, int fd);
 int					ft_strlen(char *str);
 bool				verify_format(char *str);
 int					ft_strrcmp(char *s1, char *s2);
 char				**get_map(char *file, t_map *map);
-void				verify_map(t_map *map);
+void				verify_map(t_map *map, t_game *game);
 void				verif_char(char **map);
 void				verif_lenght(t_map *map);
 void				verif_walls(char **map);
@@ -67,6 +75,8 @@ void				verif_get_stats(t_map *map);
 void				verif_player(t_map *map);
 void				verif_exit(t_map *map);
 void				count_coins(t_map *map);
+void				check_path(t_map *map);
+char				*ft_strdup(const char *s);
 
 //GNL functions
 char				*get_next_line(int fd);
