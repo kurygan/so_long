@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 23:24:33 by mkettab           #+#    #+#             */
-/*   Updated: 2025/03/04 00:32:38 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/26 23:36:59y mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void	verif_player(t_map *map)
 			if (temp[y][x] == 'P')
 			{
 				count++;
-				map->p_base_y = y;
-				map->p_base_x = x;
+				map->player_base_cord_y = y;
+				map->player_base_cord_x = x;
 			}
 			x++;
 		}

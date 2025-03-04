@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:46:45 by mkettab           #+#    #+#             */
-/*   Updated: 2025/03/04 00:31:01 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/03/04 04:04:51 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ void	lst_clean(t_list **buf)
 	if (!clean_node)
 		return ;
 	clean_node->next = NULL;
-	clean_node->content = malloc(sizeof(char) * ((ft_strlen(get_last->content)
-					- i) + 1));
+	clean_node->content = malloc(sizeof(char) * ((ft_strlen(get_last->content) - i) + 1));
 	if (!(clean_node->content))
 		return (free(clean_node));
 	j = 0;
@@ -42,16 +41,20 @@ void	lst_clean(t_list **buf)
 
 void	lst_clean_v2(t_list *get_last, t_list **buf, int *i)
 {
-	if (!(get_last) || !(get_last->content) || !(get_last->content[*i]))
-		return (exit(1));
-	while (get_last->content[*i] && get_last->content[*i] != '\n')
-		(*i)++;
-	if (get_last->content[*i] && get_last->content[*i] == '\n')
-		(*i)++;
-	if (get_last->content && ft_strlen(get_last->content) - *i == 0)
+	if (!get_last || !get_last->content || !get_last->content[*i])
 	{
 		lst_free(*buf);
 		*buf = NULL;
 		return ;
 	}
+	while (get_last->content[*i] && get_last->content[*i] != '\n')
+        (*i)++;
+    if (get_last->content[*i] == '\n')
+        (*i)++;
+    if (ft_strlen(get_last->content) - *i == 0)
+    {
+        lst_free(*buf);
+        *buf = NULL;
+        return ;
+    }
 }

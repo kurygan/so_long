@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 00:29:17 by mkettab           #+#    #+#             */
-/*   Updated: 2025/03/04 00:30:57 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/02/27 00:25:21 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ void	verif_walls(char **map)
 
 void	verif_up_down(char *temp, char **map)
 {
-	if (!temp || !*temp)
-		return (exit(1));
 	while (*temp)
 	{
 		if (*temp != '1')
