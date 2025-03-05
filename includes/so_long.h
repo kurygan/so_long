@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 23:05:24 by mkettab           #+#    #+#             */
-/*   Updated: 2025/03/03 21:31:17 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/03/05 03:46:35 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,16 @@ typedef struct s_map
 
 typedef struct s_game
 {
+	mlx_t			*mlx;
 	int				pos_y;
 	int				pos_x;
 	int				curr_c;
+	unsigned long	move_count;
+	mlx_image_t		*player;
+	mlx_image_t		*collectible;
+	mlx_image_t		*wall;
+	mlx_image_t		*floor;
+	mlx_image_t		*exit;
 }					t_game;
 
 void				ft_putstr_fd(char *str, int fd);
@@ -77,6 +84,9 @@ void				verif_exit(t_map *map);
 void				count_coins(t_map *map);
 void				check_path(t_map *map);
 char				*ft_strdup(const char *s);
+void				init_and_display(t_game *game, t_map *map);
+void				init_textures(t_game *game);
+mlx_image_t			*init_img(char *path, t_game *game);
 
 //GNL functions
 char				*get_next_line(int fd);
