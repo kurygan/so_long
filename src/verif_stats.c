@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verif_stats.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tylerlover911 <tylerlover911@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/26 23:24:33 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/26 23:36:59y mkettab          ###   ########.fr       */
+/*   Created: 2025/03/05 09:01:14 by tylerlover9       #+#    #+#             */
+/*   Updated: 2025/03/05 09:01:18 by tylerlover9      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void	verif_player(t_map *map)
 			if (temp[y][x] == 'P')
 			{
 				count++;
-				map->p_base_y = y;
-				map->p_base_x = x;
+				map->p_coord.y = y;
+				map->p_coord.x = x;
 			}
 			x++;
 		}

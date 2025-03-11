@@ -58,3 +58,4 @@ So_long-Tester/
 build/
 so_long
 test.c
+.DS_Store

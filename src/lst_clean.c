@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lst_clean.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tylerlover911 <tylerlover911@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:46:45 by mkettab           #+#    #+#             */
-/*   Updated: 2025/03/04 04:04:51 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/03/05 09:01:02 by tylerlover9      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,15 @@ void	lst_clean_v2(t_list *get_last, t_list **buf, int *i)
 		lst_free(*buf);
 		*buf = NULL;
 		return ;
-	}
+	}		
 	while (get_last->content[*i] && get_last->content[*i] != '\n')
-        (*i)++;
-    if (get_last->content[*i] == '\n')
-        (*i)++;
-    if (ft_strlen(get_last->content) - *i == 0)
-    {
-        lst_free(*buf);
-        *buf = NULL;
-        return ;
-    }
+		(*i)++;
+	if (get_last->content[*i] == '\n')
+		(*i)++;
+	if (ft_strlen(get_last->content) - *i == 0)
+	{
+		lst_free(*buf);
+		*buf = NULL;
+		return ;
+	}
 }

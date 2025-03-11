@@ -17,11 +17,11 @@ static char	**copy_map(t_map *map)
 	char	**copy;
 	int		i;
 
-	copy = malloc(sizeof(char *) * (map->y_len + 1));
+	copy = malloc(sizeof(char *) * (map->len.y + 1));
 	if (!copy)
 		return (NULL);
 	i = 0;
-	while (i < map->y_len)
+	while (i < map->len.y)
 	{
 		copy[i] = ft_strdup(map->map[i]);
 		if (!copy[i])
@@ -51,45 +51,44 @@ static void	free_copy(char **map_copy, int height)
 	free(map_copy);
 }
 
-static void	flood_fill(char **map, int x, int y, int *collectibles, int *exit_reach)
+static void	flood_fill(char **map, t_point pos, t_game *game)
 {
-	if (map[y][x] == '1' || map[y][x] == 'F' || x < 0 || y < 0 || x > ft_strlen(*map))
+	int	x;
+	int	y;
+
+	x = pos.x;
+	y = pos.y;
+	if (map[y][x] == '1' || map[y][x] == 'F')
 		return ;
 	if (map[y][x] == 'E')
 	{
-		*exit_reach = 1;
+		game->exit_reached = true;
 		return ;
 	}
 	if (map[y][x] == 'C')
-		(*collectibles)--;
+		(game->curr_c)--;
 	map[y][x] = 'F';
-	flood_fill(map, x + 1, y, collectibles, exit_reach);
-	flood_fill(map, x - 1, y, collectibles, exit_reach);
-	flood_fill(map, x, y + 1, collectibles, exit_reach);
-	flood_fill(map, x, y - 1, collectibles, exit_reach);
+	flood_fill(map, (t_point){pos.x - 1, pos.y}, game);
+	flood_fill(map, (t_point){pos.x + 1, pos.y}, game);
+	flood_fill(map, (t_point){pos.x, pos.y - 1}, game);
+	flood_fill(map, (t_point){pos.x, pos.y + 1}, game);
 }
 
-void	check_path(t_map *map)
+void	check_path(t_map *map, t_game *game)
 {
 	char	**map_copy;
-	int		c_count;
-	int		exit_reach;
 
-	c_count = map->count_c;
-	exit_reach = 0;
+	game->curr_c = map->count_c;
+	game->exit_reached = false;
 	map_copy = copy_map(map);
 	if (!map_copy)
 		return (ft_freeall(map->map), exit(1));
-	flood_fill(map_copy, map->p_base_x, map->p_base_y, &c_count, &exit_reach);
-	int	i = 0;
-	while (map_copy[i])
-	{
-		ft_putstr_fd(map_copy[i++], 1);
-		ft_putstr_fd("\n", 1);
-	}
-	free_copy(map_copy, map->y_len);
-	if (c_count > 0)
-		return (ft_freeall(map->map), error_handle("Collectible not reachable"));
-	if (!exit_reach)
+	flood_fill(map_copy, map->p_coord, game);
+	free_copy(map_copy, map->len.y);
+	if (game->curr_c > 0)
+		return (ft_freeall(map->map),
+			error_handle("Collectible not reachable"));
+	game->curr_c = map->count_c;
+	if (!game->exit_reached)
 		return (ft_freeall(map->map), error_handle("Exit not reachable"));
 }

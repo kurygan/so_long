@@ -43,13 +43,13 @@ char	**get_map(char *file, t_map *map)
 	int		i;
 	int		j;
 	
-	map->y_len = malloc_lines(file);
-	temp = malloc(sizeof(char *) * (map->y_len + 1));
+	map->len.y = malloc_lines(file);
+	temp = malloc(sizeof(char *) * (map->len.y + 1));
 	if (!temp)
 		exit(EXIT_FAILURE);
 	fd = open(file, O_RDONLY);
 	i = -1;
-	while (++i < map->y_len)
+	while (++i < map->len.y)
 	{
 		temp[i] = get_next_line(fd);
 		if (!temp[i])

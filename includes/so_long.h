@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tylerlover911 <tylerlover911@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 23:05:24 by mkettab           #+#    #+#             */
-/*   Updated: 2025/03/05 03:46:35 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/03/05 08:46:12 by tylerlover9      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,11 @@
 # define E_FORMAT_MAP "Map format is wrong, you dumb shit!"
 # define BUFFER_SIZE 5
 
-// Error type
-typedef enum s_error_handle
+typedef struct s_point
 {
-	wrong_args,
-	map_format,
-	map_nf,
-	texture_nf,
-	map_n_rect,
-	map_walls,
-	player
-}					t_error_handle;
+	int x;
+	int y;
+}	t_point;
 
 typedef struct s_list
 {
@@ -45,18 +39,16 @@ typedef struct s_map
 {
 	char			**map;
 	int				count_c;
-	int				p_base_x;
-	int				p_base_y;
-	int				y_len;
-	int				x_len;
+	t_point			p_coord;
+	t_point			len;
 }					t_map;
 
 typedef struct s_game
 {
 	mlx_t			*mlx;
-	int				pos_y;
-	int				pos_x;
+	t_point			pos;
 	int				curr_c;
+	bool			exit_reached;
 	unsigned long	move_count;
 	mlx_image_t		*player;
 	mlx_image_t		*collectible;
@@ -82,7 +74,7 @@ void				verif_get_stats(t_map *map);
 void				verif_player(t_map *map);
 void				verif_exit(t_map *map);
 void				count_coins(t_map *map);
-void				check_path(t_map *map);
+void				check_path(t_map *map, t_game *game);
 char				*ft_strdup(const char *s);
 void				init_and_display(t_game *game, t_map *map);
 void				init_textures(t_game *game);

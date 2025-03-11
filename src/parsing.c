@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tylerlover911 <tylerlover911@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 03:01:11 by mkettab           #+#    #+#             */
-/*   Updated: 2025/03/04 04:24:19 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/03/05 08:46:34 by tylerlover9      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ void	verify_map(t_map *map, t_game *game)
 	verif_lenght(map);
 	verif_walls(map->map);
 	verif_get_stats(map);
-	check_path(map);
-	ft_memset(game, 0, sizeof(t_game));
+	check_path(map, game);
 }
 
 void	verif_char(char **map)
@@ -53,10 +52,10 @@ void	verif_lenght(t_map *map)
 	if (!map->map || !map->map[0])
 		return ;
 	base_len = ft_strlen(map->map[0]);
-	map->x_len = base_len;
+	map->len.x = base_len;
 	temp = map->map;
 	i = 0;
-	while (i < map->y_len)
+	while (i < map->len.y)
 	{
 		if (ft_strlen(temp[i]) != base_len)
 		{
