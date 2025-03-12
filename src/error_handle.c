@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_handle.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tylerlover911 <tylerlover911@student.42    +#+  +:+       +#+        */
+/*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 23:35:53 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/27 21:41:14 by tylerlover9      ###   ########.fr       */
+/*   Updated: 2025/03/12 02:02:02 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@ void	error_handle(char *error)
 	ft_putstr_fd("Error\n", 2);
 	ft_putstr_fd("--  ", 2);
 	ft_putstr_fd(error, 2);
+	ft_putstr_fd("\n", 2);
 	exit(EXIT_FAILURE);
 }
 
-void	ft_freeall(char **map)
+void	freeall(char **map)
 {
 	char **temp;
 
@@ -32,4 +33,20 @@ void	ft_freeall(char **map)
 	}
 	free(map);
 	map = NULL;
+}
+
+void	freeimg(t_game *game)
+{
+	if (!game)
+		return ;
+	if (game->collectible)
+		mlx_delete_image(game->mlx, game->collectible);
+	if (game->player)
+		mlx_delete_image(game->mlx, game->player);
+	if (game->exit)
+		mlx_delete_image(game->mlx, game->exit);
+	if (game->floor)
+		mlx_delete_image(game->mlx, game->floor);
+	if (game->wall)
+		mlx_delete_image(game->mlx, game->wall);
 }

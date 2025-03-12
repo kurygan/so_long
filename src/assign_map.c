@@ -22,10 +22,10 @@ static int	malloc_lines(char *file)
 	line = NULL;
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-        error_handle("404: Map not Found!");
+        error_handle(M_NOT_F);
 	line = get_next_line(fd);
 	if (!line)
-		return(close(fd), error_handle("Empty Map!"), 0);
+		return(close(fd), error_handle(EMPT_MAP), 0);
 	while (line)
 	{
 		count++;
@@ -53,7 +53,7 @@ char	**get_map(char *file, t_map *map)
 	{
 		temp[i] = get_next_line(fd);
 		if (!temp[i])
-			return (ft_freeall(temp), exit(EXIT_FAILURE), NULL);
+			return (freeall(temp), exit(EXIT_FAILURE), NULL);
 		j = 0;
 		while (temp[i][j] && temp[i][j] != '\n')
 			j++;

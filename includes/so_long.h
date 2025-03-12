@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tylerlover911 <tylerlover911@student.42    +#+  +:+       +#+        */
+/*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 23:05:24 by mkettab           #+#    #+#             */
-/*   Updated: 2025/03/05 08:46:12 by tylerlover9      ###   ########.fr       */
+/*   Updated: 2025/03/12 02:37:31 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,32 @@
 # include <unistd.h>
 
 # define E_FORMAT_MAP "Map format is wrong, you dumb shit!"
+# define NOT_RECT "Bro don't know how to make a rectangle"
+# define N_ALL_CHAR "Only 10CEP, bro forgor it :|"
+# define ARGS "You can't put 1 argument ?????"
+# define EXT ".ber, it's not that complicated"
+# define MAP_SIZE "It's too big (that's what she said)"
+# define M_NOT_F "404 Error: Map not found"
+# define EMPT_MAP "Put at least a 1 in a map..."
+# define P_NUMB "You think this is a coop game lmao"
+# define E_NUMB "How tf can there be more than 1 exit ???"
+# define C_NUMB "The game is too easy if there is no coins"
+# define W_N_COMPLETE "This is not an open world"
+# define C_N_REACH "Collectible not reachable"
+# define E_N_REACH "Exit not reachable"
+# define IMG_LOAD "Image does not exist"
+# define P_DISP "Player cannot be displayed"
+# define C_DISP "Coin cannot be displayed"
+# define E_DISP "Exit cannot be displayed"
+# define W_DISP "Wall cannot be displayed"
+# define F_DISP "Floor cannot be displayed"
 # define BUFFER_SIZE 5
 
 typedef struct s_point
 {
-	int x;
-	int y;
-}	t_point;
+	int				x;
+	int				y;
+}					t_point;
 
 typedef struct s_list
 {
@@ -46,9 +65,11 @@ typedef struct s_map
 typedef struct s_game
 {
 	mlx_t			*mlx;
+	char			**map;
 	t_point			pos;
 	int				curr_c;
 	bool			exit_reached;
+	t_point			p;
 	unsigned long	move_count;
 	mlx_image_t		*player;
 	mlx_image_t		*collectible;
@@ -68,7 +89,7 @@ void				verif_lenght(t_map *map);
 void				verif_walls(char **map);
 void				verif_up_down(char *temp, char **map);
 void				*ft_memset(void *b, int c, size_t len);
-void				ft_freeall(char **map);
+void				freeall(char **map);
 void				error_handle(char *error);
 void				verif_get_stats(t_map *map);
 void				verif_player(t_map *map);
@@ -77,8 +98,9 @@ void				count_coins(t_map *map);
 void				check_path(t_map *map, t_game *game);
 char				*ft_strdup(const char *s);
 void				init_and_display(t_game *game, t_map *map);
-void				init_textures(t_game *game);
-mlx_image_t			*init_img(char *path, t_game *game);
+void				freeimg(t_game *game);
+void				ft_hook(mlx_key_data_t key, void *param);
+void				putnbr(unsigned long nbr);
 
 //GNL functions
 char				*get_next_line(int fd);

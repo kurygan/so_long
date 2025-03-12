@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tylerlover911 <tylerlover911@student.42    +#+  +:+       +#+        */
+/*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 03:01:11 by mkettab           #+#    #+#             */
-/*   Updated: 2025/03/05 08:46:34 by tylerlover9      ###   ########.fr       */
+/*   Updated: 2025/03/12 01:58:07 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	verif_char(char **map)
 		{
 			if (temp[y][x] != '1' && temp[y][x] != '0' && temp[y][x] != 'E'
 				&& temp[y][x] != 'P' && temp[y][x] != 'C')
-				return (ft_freeall(map), error_handle("Put only allowed char"));
+				return (freeall(map), error_handle(N_ALL_CHAR));
 			x++;
 		}
 		y++;
@@ -59,8 +59,8 @@ void	verif_lenght(t_map *map)
 	{
 		if (ft_strlen(temp[i]) != base_len)
 		{
-			ft_freeall(map->map);
-			error_handle("This is not a rectangle :|");
+			freeall(map->map);
+			error_handle(NOT_RECT);
 		}
 		i++;
 	}

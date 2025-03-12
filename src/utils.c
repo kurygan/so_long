@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tylerlover911 <tylerlover911@student.42    +#+  +:+       +#+        */
+/*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 00:04:46 by mkettab           #+#    #+#             */
-/*   Updated: 2025/03/03 11:42:50 by tylerlover9      ###   ########.fr       */
+/*   Updated: 2025/03/12 02:33:11 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ void	ft_putstr_fd(char *str, int fd)
 {
 	while (*str)
 		write(fd, str++, 1);
+}
+
+static void	ft_putchar(char c)
+{
+	write(1, &c, 1);
 }
 
 int	ft_strlen(char *str)
@@ -47,4 +52,11 @@ char	*ft_strdup(const char *s)
 	}
 	dest[i] = '\0';
 	return (dest);
+}
+
+void	putnbr(unsigned long nbr)
+{
+	if (nbr >= 10)
+		putnbr(nbr / 10);
+	ft_putchar((nbr % 10) + '0');
 }

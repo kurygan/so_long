@@ -82,13 +82,13 @@ void	check_path(t_map *map, t_game *game)
 	game->exit_reached = false;
 	map_copy = copy_map(map);
 	if (!map_copy)
-		return (ft_freeall(map->map), exit(1));
+		return (freeall(map->map), exit(1));
 	flood_fill(map_copy, map->p_coord, game);
 	free_copy(map_copy, map->len.y);
 	if (game->curr_c > 0)
-		return (ft_freeall(map->map),
-			error_handle("Collectible not reachable"));
+		return (freeall(map->map),
+			error_handle(C_N_REACH));
 	game->curr_c = map->count_c;
 	if (!game->exit_reached)
-		return (ft_freeall(map->map), error_handle("Exit not reachable"));
+		return (freeall(map->map), error_handle(E_N_REACH));
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verif_stats.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tylerlover911 <tylerlover911@student.42    +#+  +:+       +#+        */
+/*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 09:01:14 by tylerlover9       #+#    #+#             */
-/*   Updated: 2025/03/05 09:01:18 by tylerlover9      ###   ########.fr       */
+/*   Updated: 2025/03/12 01:59:33 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	verif_player(t_map *map)
 		y++;
 	}
 	if (count != 1)
-		return (ft_freeall(map->map), error_handle("1 Player Only!"));
+		return (freeall(map->map), error_handle(P_NUMB));
 }
 
 void	verif_exit(t_map *map)
@@ -70,7 +70,7 @@ void	verif_exit(t_map *map)
 		y++;
 	}
 	if (count != 1)
-		return (ft_freeall(map->map), error_handle("1 Exit Only!"));
+		return (freeall(map->map), error_handle(E_NUMB));
 }
 
 void	count_coins(t_map *map)
@@ -95,6 +95,6 @@ void	count_coins(t_map *map)
 		y++;
 	}
 	if (count == 0)
-		return (ft_freeall(map->map), error_handle("1 collectible or more"));
+		return (freeall(map->map), error_handle(C_NUMB));
 	map->count_c = count;
 }
