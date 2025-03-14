@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 23:35:53 by mkettab           #+#    #+#             */
-/*   Updated: 2025/03/12 02:02:02 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/03/14 23:57:13 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	error_handle(char *error)
 
 void	freeall(char **map)
 {
-	char **temp;
+	char	**temp;
 
 	temp = map;
 	while (*temp)

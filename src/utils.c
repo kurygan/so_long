@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 00:04:46 by mkettab           #+#    #+#             */
-/*   Updated: 2025/03/12 02:33:11 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/03/14 23:58:16 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	ft_putchar(char c)
 
 int	ft_strlen(char *str)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	while (str[len])

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   assign_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/21 02:34:44 by mkettab           #+#    #+#             */
-/*   Updated: 2025/02/21 02:53:39by mkettab          ###   ########.fr       */
+/*   Created: 2025/03/14 23:58:43 by mkettab           #+#    #+#             */
+/*   Updated: 2025/03/14 23:58:45 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ static int	malloc_lines(char *file)
 	line = NULL;
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-        error_handle(M_NOT_F);
+		error_handle(M_NOT_F);
 	line = get_next_line(fd);
 	if (!line)
-		return(close(fd), error_handle(EMPT_MAP), 0);
+		return (close(fd), error_handle(EMPT_MAP), 0);
 	while (line)
 	{
 		count++;
@@ -42,7 +42,7 @@ char	**get_map(char *file, t_map *map)
 	char	**temp;
 	int		i;
 	int		j;
-	
+
 	map->len.y = malloc_lines(file);
 	temp = malloc(sizeof(char *) * (map->len.y + 1));
 	if (!temp)

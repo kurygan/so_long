@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 02:58:45 by mkettab           #+#    #+#             */
-/*   Updated: 2025/03/12 02:10:04 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/03/15 00:01:14 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int	main(int argc, char **argv)
 	verify_map(&map, &game);
 	if (map.len.x > 30 || map.len.y > 16)
 		return (freeall(map.map), error_handle(MAP_SIZE), 0);
-	game.mlx = mlx_init(map.len.x * 128, map.len.y * 128, "ChurBum Adventure", true);
+	game.mlx = mlx_init(map.len.x * 128, map.len.y * 128, "ChurBum Adventure",
+			true);
 	if (!game.mlx)
 		return (freeall(map.map), EXIT_FAILURE);
 	init_and_display(&game, &map);
