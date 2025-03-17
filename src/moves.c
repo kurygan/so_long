@@ -6,7 +6,7 @@
 /*   By: mkettab <mkettab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 02:07:34 by mkettab           #+#    #+#             */
-/*   Updated: 2025/03/15 00:01:24 by mkettab          ###   ########.fr       */
+/*   Updated: 2025/03/17 23:21:14 by mkettab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	get_collectible(t_game *game)
 	}
 }
 
-static void	check_victory(t_game *game)
+static void	if_finished(t_game *game)
 {
 	char	pos;
 
@@ -58,10 +58,10 @@ static void	update_pos(mlx_key_data_t key, t_game *game)
 		(game->p.x)++;
 	putnbr(++(game->move_count));
 	ft_putstr_fd("\n", 1);
-	check_victory(game);
+	if_finished(game);
 }
 
-static int	movement_valid(mlx_key_data_t key, t_game *game)
+static int	is_mov_valid(mlx_key_data_t key, t_game *game)
 {
 	int	x;
 	int	y;
@@ -94,7 +94,7 @@ void	ft_hook(mlx_key_data_t key, void *param)
 	{
 		if (key.key == MLX_KEY_ESCAPE)
 			return (mlx_close_window(game->mlx));
-		if (movement_valid(key, game) == 1)
+		if (is_mov_valid(key, game) == 1)
 			update_pos(key, game);
 		game->player->instances[0].x = game->p.x * 128;
 		game->player->instances[0].y = game->p.y * 128;

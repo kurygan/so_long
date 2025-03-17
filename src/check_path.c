@@ -12,7 +12,7 @@
 
 #include "../includes/so_long.h"
 
-static char	**copy_map(t_map *map)
+static char	**map_cpy(t_map *map)
 {
 	char	**copy;
 	int		i;
@@ -39,16 +39,6 @@ static char	**copy_map(t_map *map)
 	}
 	copy[i] = NULL;
 	return (copy);
-}
-
-static void	free_copy(char **map_copy, int height)
-{
-	int	i;
-
-	i = 0;
-	while (i < height)
-		free(map_copy[i++]);
-	free(map_copy);
 }
 
 static void	flood_fill(char **map, t_point pos, t_game *game)
@@ -80,11 +70,11 @@ void	check_path(t_map *map, t_game *game)
 
 	game->curr_c = map->count_c;
 	game->exit_reached = false;
-	map_copy = copy_map(map);
+	map_copy = map_cpy(map);
 	if (!map_copy)
 		return (freeall(map->map), exit(1));
 	flood_fill(map_copy, map->p_coord, game);
-	free_copy(map_copy, map->len.y);
+	freeall(map_copy);
 	if (game->curr_c > 0)
 		return (freeall(map->map),
 			error_handle(C_N_REACH));
